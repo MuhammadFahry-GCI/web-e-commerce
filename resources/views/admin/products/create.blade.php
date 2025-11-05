@@ -1,5 +1,3 @@
-{{-- File: resources/views/admin/products/create.blade.php --}}
-
 @extends('layouts.admin')
 
 @section('title', 'Tambah Produk - Admin')
@@ -53,7 +51,7 @@
             </div>
 
             <div>
-                <label class="block text-gray-700 mb-2">Diskon (%) </label>
+                <label class="block text-gray-700 mb-2">Diskon (%)</label>
                 <input type="number" name="discount" value="{{ old('discount', 0) }}" min="0" max="100"
                        class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
@@ -74,8 +72,14 @@
 
             <div class="md:col-span-2">
                 <label class="block text-gray-700 mb-2">Gambar Produk</label>
-                <input type="file" name="image" accept="image/*" class="w-full border rounded px-4 py-2">
+                <input type="file" name="image" accept="image/*" class="w-full border rounded px-4 py-2" onchange="previewImage(event)">
                 <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG. Maksimal 2MB</p>
+
+                <!-- Preview Image -->
+                <div id="imagePreview" class="mt-4 hidden">
+                    <p class="text-sm text-gray-600 mb-2">Preview:</p>
+                    <img id="previewImg" src="" alt="Preview" class="w-48 h-48 object-cover rounded border">
+                </div>
             </div>
 
             <div class="md:col-span-2">
@@ -100,4 +104,39 @@
         </div>
     </form>
 </div>
+
+<script>
+function previewImage(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+
+    if (file) {
+        // Check file size (2MB max)
+        if (file.size > 2048000) {
+            alert('Ukuran file terlalu besar! Maksimal 2MB');
+            event.target.value = '';
+            preview.classList.add('hidden');
+            return;
+        }
+
+        // Check file type
+        if (!file.type.match('image/jpeg') && !file.type.match('image/png') && !file.type.match('image/jpg') && !file.type.match('image/gif')) {
+            alert('Format file tidak didukung! Gunakan JPG, PNG, atau GIF');
+            event.target.value = '';
+            preview.classList.add('hidden');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            previewImg.src = e.target.result;
+            preview.classList.remove('hidden');
+        }
+        reader.readAsDataURL(file);
+    } else {
+        preview.classList.add('hidden');
+    }
+}
+</script>
 @endsection

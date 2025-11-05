@@ -97,29 +97,6 @@
         @endif
     </div>
 </div>
-
-<!-- Special Offers -->
-<div class="container mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold mb-8 text-center">Penawaran Spesial</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-gradient-to-br from-red-500 to-red-600 text-white p-8 rounded-lg">
-            <h3 class="text-2xl font-bold mb-2">Diskon 50%</h3>
-            <p class="mb-4">Untuk semua headphone gaming</p>
-            <span class="text-sm">Berlaku hingga 31 Desember</span>
-        </div>
-        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-8 rounded-lg">
-            <h3 class="text-2xl font-bold mb-2">Gratis Ongkir</h3>
-            <p class="mb-4">Minimum pembelian Rp 500.000</p>
-            <span class="text-sm">Ke seluruh Indonesia</span>
-        </div>
-        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-8 rounded-lg">
-            <h3 class="text-2xl font-bold mb-2">Cashback 20%</h3>
-            <p class="mb-4">Untuk pembelian laptop</p>
-            <span class="text-sm">Maksimal Rp 1.000.000</span>
-        </div>
-    </div>
-</div>
-
 <!-- Why Choose Us -->
 <div class="bg-blue-50 py-12">
     <div class="container mx-auto px-4">

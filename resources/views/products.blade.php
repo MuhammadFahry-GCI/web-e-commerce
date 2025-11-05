@@ -20,7 +20,7 @@
                             @foreach($categories as $cat)
                             <label class="flex items-center">
                                 <input type="checkbox" name="category[]" value="{{ $cat->slug }}"
-                                       {{ in_array($cat->slug, request('category', [])) ? 'checked' : '' }}
+                                       {{ in_array($cat->slug, (array) request('category', [])) ? 'checked' : '' }}
                                        class="mr-2" onchange="this.form.submit()">
                                 <span class="text-sm">{{ $cat->name }}</span>
                             </label>

@@ -32,14 +32,13 @@
             <!-- Top Bar -->
             <div class="flex justify-between items-center py-2 border-b border-blue-500 text-sm">
                 <div class="flex gap-4">
-                    <span><i class="fas fa-phone"></i> +62 812-3456-7890</span>
-                    <span><i class="fas fa-envelope"></i> info@elektromart.com</span>
+                    <span><i class="fas fa-phone"></i> 0823-6154-6024</span>
+                    <span><i class="fas fa-envelope"></i> elyctravoid@gmail.com</span>
                 </div>
                 <div class="flex gap-3">
-                    <a href="#" class="hover:text-blue-200"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="hover:text-blue-200"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-blue-200"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="hover:text-blue-200"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/19sDniTYkU/" class="hover:text-blue-200"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/elektromart.id?igsh=ZWRtdnE3a2Fvamti" class="hover:text-blue-200"><i class="fab fa-instagram"></i></a>
+                    <a href="0823-6154-6024" class="hover:text-blue-200"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
 
@@ -138,9 +137,9 @@
                 <div>
                     <h3 class="font-bold text-lg mb-4">Kontak</h3>
                     <ul class="text-gray-400 text-sm space-y-2">
-                        <li><i class="fas fa-map-marker-alt"></i> Jl. Elektronik No. 123, Jakarta</li>
-                        <li><i class="fas fa-phone"></i> +62 812-3456-7890</li>
-                        <li><i class="fas fa-envelope"></i> info@elektromart.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. bulcin no 1</li>
+                        <li><i class="fas fa-phone"></i> 0823-6154-6024</li>
+                        <li><i class="fas fa-envelope"></i> elyctravoid@gmail.com</li>
                     </ul>
                 </div>
                 <div>
@@ -154,15 +153,14 @@
                 <div>
                     <h3 class="font-bold text-lg mb-4">Media Sosial</h3>
                     <div class="flex gap-4">
-                        <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-2xl hover:text-pink-400"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-2xl hover:text-blue-300"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-2xl hover:text-green-400"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/19sDniTYkU/" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/elektromart.id?igsh=ZWRtdnE3a2Fvamti" class="text-2xl hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+                        <a href="0823-6154-6024" class="text-2xl hover:text-green-400"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
-                <p>&copy; 2024 ElektroMart. All rights reserved.</p>
+                <p>&copy; 2025 ElektroMart. All rights reserved.</p>
             </div>
         </div>
     </footer>
