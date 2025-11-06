@@ -1,14 +1,10 @@
 <?php
 
-// File: app/Mail/OrderConfirmation.php
-
 namespace App\Mail;
 
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class OrderConfirmation extends Mailable
@@ -22,22 +18,9 @@ class OrderConfirmation extends Mailable
         $this->order = $order;
     }
 
-    public function envelope(): Envelope
+    public function build()
     {
-        return new Envelope(
-            subject: 'Konfirmasi Pesanan - ' . $this->order->order_number,
-        );
-    }
-
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.order-confirmation',
-        );
-    }
-
-    public function attachments(): array
-    {
-        return [];
+        return $this->subject('Konfirmasi Pesanan #' . $this->order->order_number)
+                    ->view('emails.order-confirmation');
     }
 }

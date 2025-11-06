@@ -67,7 +67,10 @@ class CartController extends Controller
 
     public function update(Request $request, Cart $cart)
     {
-        $this->authorize('update', $cart);
+        // Manual authorization check
+        if ($cart->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
 
         $request->validate([
             'quantity' => 'required|integer|min:1',
@@ -84,7 +87,10 @@ class CartController extends Controller
 
     public function destroy(Cart $cart)
     {
-        $this->authorize('delete', $cart);
+        // Manual authorization check
+        if ($cart->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
 
         $cart->delete();
 

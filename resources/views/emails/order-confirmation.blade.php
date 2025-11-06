@@ -21,21 +21,25 @@
             <p>Tim kami sedang mempersiapkan pesanan Anda. Mohon menunggu konfirmasi lebih lanjut.</p>
         </div>
 
-        <p>Halo <strong>{{customer_name}}</strong>,</p>
+        <p>Halo <strong>{{ $order->shipping_name }}</strong>,</p>
 
         <div class="order-info">
-            <p><strong>Nomor Pesanan:</strong> {{order_number}}</p>
-            <p><strong>Tanggal:</strong> {{order_date}}</p>
-            <p><strong>Total:</strong> Rp {{total}}</p>
-            <p><strong>Metode Pembayaran:</strong> {{payment_method}}</p>
+            <p><strong>Nomor Pesanan:</strong> {{ $order->order_number }}</p>
+            <p><strong>Tanggal:</strong> {{ $order->created_at->format('d F Y, H:i') }}</p>
+            <p><strong>Total:</strong> Rp {{ number_format($order->total, 0, ',', '.') }}</p>
+            <p><strong>Metode Pembayaran:</strong> {{ ucfirst($order->payment_method) }}</p>
         </div>
 
         <h3>Produk yang Dipesan:</h3>
-        <p>{{products}}</p>
+        <ul>
+            @foreach($order->items as $item)
+                <li>{{ $item->product_name }} ({{ $item->quantity }}x) - Rp {{ number_format($item->subtotal, 0, ',', '.') }}</li>
+            @endforeach
+        </ul>
 
         <h3>Alamat Pengiriman:</h3>
         <div class="order-info">
-            <p>{{shipping_address}}</p>
+            <p>{{ $order->shipping_address }}, {{ $order->shipping_city }}, {{ $order->shipping_province }} {{ $order->shipping_postal_code }}</p>
         </div>
 
         <p><strong>📦 Pesanan Anda sedang kami persiapkan!</strong></p>

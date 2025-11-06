@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CustomerController;
+// use Illuminate\Support\Facades\Mail;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -78,3 +79,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/customers/{customer}', [CustomerController::class, 'show'])->name('customers.show');
 });
+
+// Route::get('/tesmail', function() {
+//     try {
+//         Mail::raw('Halo! Ini test email dari Laravel.', function($msg) {
+//             $msg->to('fahriyansah933@gmail.com') // ganti dengan email kamu
+//                 ->subject('Test Email Laravel');
+//         });
+//         return '✅ Email berhasil dikirim.';
+//     } catch (\Exception $e) {
+//         return '❌ Gagal: ' . $e->getMessage();
+//     }
+// });
