@@ -101,41 +101,53 @@
             </div>
 
             @if($products->count() > 0)
+            @php
+                // Pisahkan produk berdasarkan stok
+                $productsArray = $products->items();
+                $productsInStock = collect($productsArray)->filter(function($product) {
+                    return $product->stock > 0;
+                });
+                $productsOutOfStock = collect($productsArray)->filter(function($product) {
+                    return $product->stock == 0;
+                });
+                $sortedProducts = $productsInStock->concat($productsOutOfStock);
+            @endphp
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                @foreach($products as $product)
-                <div class="bg-white rounded-lg shadow hover:shadow-xl transition">
+                @foreach($sortedProducts as $product)
+                <div class="bg-white rounded-lg shadow hover:shadow-xl transition {{ $product->stock == 0 ? 'opacity-75' : '' }}">
                     <div class="relative">
                         @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover rounded-t-lg {{ $product->stock == 0 ? 'grayscale' : '' }}">
                         @else
                             <div class="w-full h-48 bg-gray-200 rounded-t-lg flex items-center justify-center">
                                 <i class="fas fa-image text-4xl text-gray-400"></i>
                             </div>
                         @endif
 
-                        @if($product->discount > 0)
+                        @if($product->discount > 0 && $product->stock > 0)
                         <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold">-{{ $product->discount }}%</span>
                         @endif
 
                         @if($product->stock == 0)
-                        <span class="absolute top-2 left-2 bg-gray-800 text-white px-2 py-1 rounded text-sm">Stok Habis</span>
+                        <span class="absolute top-2 left-2 bg-red-600 text-white px-3 py-1 rounded text-sm font-bold">STOK HABIS</span>
                         @endif
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold mb-2 truncate">{{ $product->name }}</h3>
+                    <div class="p-4 {{ $product->stock == 0 ? 'bg-red-50' : '' }}">
+                        <h3 class="font-semibold mb-2 truncate {{ $product->stock == 0 ? 'text-gray-500' : '' }}">{{ $product->name }}</h3>
                         <p class="text-xs text-gray-500 mb-2">{{ $product->category->name }}</p>
                         <div class="mb-2">
                             @if($product->discount > 0)
                                 <span class="text-gray-400 line-through text-sm">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                                <span class="text-blue-600 font-bold text-lg block">Rp {{ number_format($product->final_price, 0, ',', '.') }}</span>
+                                <span class="font-bold text-lg block {{ $product->stock == 0 ? 'text-red-600' : 'text-blue-600' }}">Rp {{ number_format($product->final_price, 0, ',', '.') }}</span>
                             @else
-                                <span class="text-blue-600 font-bold text-lg">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                                <span class="font-bold text-lg {{ $product->stock == 0 ? 'text-red-600' : 'text-blue-600' }}">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
                             @endif
                         </div>
-                        <p class="text-sm text-gray-600 mb-3">
+                        <p class="text-sm mb-3 {{ $product->stock == 0 ? 'text-red-600 font-semibold' : 'text-gray-600' }}">
                             {{ $product->stock > 0 ? 'Stok: ' . $product->stock . ' unit' : 'Stok Habis' }}
                         </p>
-                        <a href="{{ route('product.detail', $product->slug) }}" class="block w-full bg-blue-600 text-white text-center py-2 rounded hover:bg-blue-700 transition">
+                        <a href="{{ route('product.detail', $product->slug) }}" class="block w-full text-white text-center py-2 rounded transition {{ $product->stock == 0 ? 'bg-gray-400 hover:bg-gray-500' : 'bg-blue-600 hover:bg-blue-700' }}">
                             Lihat Detail
                         </a>
                     </div>
